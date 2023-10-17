@@ -29,6 +29,14 @@ int _printf(const char *format, ...)
 				printed_chars += print_integer(argument);
 			else if (format[numeric_count] == 'b')
 				printed_chars += print_binary(argument);
+			else if (format[numeric_count] == 'u')
+				printed_chars += print_unsigned_int(argument);
+			else if (format[numeric_count] == 'o')
+				printed_chars += print_octal(argument);
+			else if (format[numeric_count] == 'x')
+				printed_chars += print_hex(argument);
+			else if (format[numeric_count] == 'X')
+				printed_chars += print_hex_upper(argument);
 			else if (format[numeric_count] == '%')
 				printed_chars += write(1, "%", 1);
 		}
@@ -36,7 +44,6 @@ int _printf(const char *format, ...)
 			printed_chars += write(1, &format[numeric_count], 1);
 		numeric_count++;
 	}
-
 	va_end(argument);
 	return (printed_chars);
 }
