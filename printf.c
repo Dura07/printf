@@ -15,37 +15,37 @@ int _printf(const char *format, ...)
 
 	va_start(argument, format);
 
-	for (numeric_count = 0; format && format[numeric_count]; numeric_count++)
+	while (format && format[numeric_count])
 	{
 	if (format[numeric_count] == '%')
 	{
-		numeric_count++;
-		if (format[numeric_count] == 'c')
-		{
-			char_arg = va_arg(argument, int);
-			_putchar(char_arg);
-		}
-		else if (format[numeric_count] == 's')
-		{
-			str_arg = va_arg(argument, char *);
+	numeric_count++;
+	if (format[numeric_count] == 'c')
+	{
+		char_arg = va_arg(argument, int);
+		_putchar(char_arg);
+	}
+	else if (format[numeric_count] == 's')
+	{
+	str_arg = va_arg(argument, char *);
 	while (*str_arg)
-			{
+	{
 	_putchar(*str_arg);
 	str_arg++;
-			}
-		}
-		else if (format[numeric_count] == '%')
-		{
-			_putchar('%');
-		}
+	}
+	}
+	else if (format[numeric_count] == '%')
+	{
+	_putchar('%');
+	}
 	}
 	else
 	{
 		_putchar(format[numeric_count]);
 	}
+	numeric_count++;
+	}
 
-}
-
-va_end(argument);
-return (numeric_count);
+	va_end(argument);
+	return (numeric_count);
 }
