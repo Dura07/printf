@@ -28,11 +28,11 @@ int _printf(const char *format, ...)
 	else if (format[count] == 's')
 	{
 	str_arg = va_arg(args, char *);
-	while (*str_arg)
-	{
-	_putchar(*str_arg);
-	str_arg++;
-	}
+		while (*str_arg)
+		{
+			_putchar(*str_arg);
+			str_arg++;
+		}
 	}
 	else if (format[count] == '%')
 	{
@@ -41,7 +41,7 @@ int _printf(const char *format, ...)
 	}
 	else
 	{
-		_putchar(format[count]);
+	_putchar(format[count]);
 	}
 	count++;
 	}
