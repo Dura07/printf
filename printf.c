@@ -1,11 +1,10 @@
-#include <stdarg.h>
-#include <unistd.h>
+#include "main.h"
 
 /**
- * _printf - Output format.
+ * _printf - Output formatted text.
  * @format: Format string.
  *
- * Return: Number of characters to be printed.
+ * Return: Number of characters printed.
  */
 int _printf(const char *format, ...)
 {
@@ -14,39 +13,30 @@ int _printf(const char *format, ...)
 	int printed_chars = 0;
 
 	va_start(argument, format);
-
 	if (format == NULL)
 		return (-1);
+
 	while (format[numeric_count])
 	{
 		if (format[numeric_count] == '%')
 		{
 			numeric_count++;
 			if (format[numeric_count] == 'c')
-			{
-				char char_arg = va_arg(argument, int);
-
-				printed_chars += write(1, &char_arg, 1);
-			}
+				printed_chars += print_char(argument);
 			else if (format[numeric_count] == 's')
-			{
-				char *str_arg = va_arg(argument, char *);
-
-				if (str_arg == NULL)
-					str_arg = "(null)";
-				while (*str_arg)
-				{
-					printed_chars += write(1, str_arg, 1);
-					str_arg++;
-				}
-			}
+				printed_chars += print_string(argument);
+			else if (format[numeric_count] == 'd' || format[numeric_count] == 'i')
+				printed_chars += print_integer(argument);
 			else if (format[numeric_count] == '%')
 				printed_chars += write(1, "%", 1);
 		}
 		else
+		{
 			printed_chars += write(1, &format[numeric_count], 1);
+		}
 		numeric_count++;
 	}
+
 	va_end(argument);
 	return (printed_chars);
 }
