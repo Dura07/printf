@@ -2,10 +2,10 @@
 #include <unistd.h>
 
 /**
- * _printf - Produces output according to a format.
- * @format: The format string.
+ * _printf - Output format.
+ * @format: Format string.
  *
- * Return: The number of characters printed.
+ * Return: Number of characters to be printed.
  */
 int _printf(const char *format, ...)
 {
@@ -15,8 +15,9 @@ int _printf(const char *format, ...)
 
 	va_start(argument, format);
 
-
-	while (format && format[numeric_count])
+	if (format == NULL)
+		return (-1);
+	while (format[numeric_count])
 	{
 		if (format[numeric_count] == '%')
 		{
@@ -31,6 +32,8 @@ int _printf(const char *format, ...)
 			{
 				char *str_arg = va_arg(argument, char *);
 
+				if (str_arg == NULL)
+					str_arg = "(null)";
 				while (*str_arg)
 				{
 					printed_chars += write(1, str_arg, 1);
@@ -44,7 +47,6 @@ int _printf(const char *format, ...)
 			printed_chars += write(1, &format[numeric_count], 1);
 		numeric_count++;
 	}
-
 	va_end(argument);
 	return (printed_chars);
 }
