@@ -31,8 +31,9 @@ int _printf(const char *format, ...)
 			else if (format[numeric_count] == 's')
 			{
 				char *str_arg = va_arg(argument, char *);
+
 				if (str_arg == NULL)
-						str_arg = "(null)";
+					str_arg = "(null)";
 				while (*str_arg)
 				{
 					printed_chars += write(1, str_arg, 1);
