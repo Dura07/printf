@@ -19,5 +19,7 @@ int printf_string(va_list val);
 int _strlen(char *str);
 int _strlenc(const char *str);
 int print_37(void);
+int print_revs(va_list val);
+int print_rot13(va_list val);
 
 #endif
