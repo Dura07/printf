@@ -22,11 +22,13 @@ int _printf(const char *format, ...)
 			if (format[numeric_count] == 'c')
 			{
 				char char_arg = va_arg(argument, int);
+
 				write(1, &char_arg, 1);
 			}
 			else if (format[numeric_count] == 's')
 			{
 				char *str_arg = va_arg(argument, char *);
+
 				while (*str_arg)
 				{
 					write(1, str_arg, 1);
