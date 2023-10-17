@@ -32,13 +32,16 @@ int _printf(const char *format, ...)
 			{
 				char *str_arg = va_arg(argument, char *);
 
-				if (str_arg == NULL)
-					str_arg = "(null)";
-				while (*str_arg)
+				if (str_arg)
 				{
-					printed_chars += write(1, str_arg, 1);
-					str_arg++;
+					int len = 0;
+
+					while (str_arg[len])
+						len++;
+					printed_chars += write(1, str_arg, len);
 				}
+				else
+					printed_chars += write(1, "(null)", 6);
 			}
 			else if (format[numeric_count] == '%')
 				printed_chars += write(1, "%", 1);
