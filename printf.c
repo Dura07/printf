@@ -27,13 +27,13 @@ int _printf(const char *format, ...)
 				printed_chars += print_string(argument);
 			else if (format[numeric_count] == 'd' || format[numeric_count] == 'i')
 				printed_chars += print_integer(argument);
+			else if (format[numeric_count] == 'b')
+				printed_chars += print_binary(argument);
 			else if (format[numeric_count] == '%')
 				printed_chars += write(1, "%", 1);
 		}
 		else
-		{
 			printed_chars += write(1, &format[numeric_count], 1);
-		}
 		numeric_count++;
 	}
 

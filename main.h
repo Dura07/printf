@@ -16,5 +16,6 @@ int _putchar(char c);
 int print_integer(va_list argument);
 int print_string(va_list argument);
 int print_char(va_list argument);
+int print_binary(va_list argument);
 
 #endif
