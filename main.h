@@ -1,6 +1,10 @@
 #ifndef MAIN_H
 #define MAIN_H
 #include <stadarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <limits.h>
 
 typedef struct format
 {
@@ -10,7 +14,7 @@ typedef struct format
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-int print_char(va_list val);
+int printf_char(va_list val);
 int printf_string(va_list val);
 int _strlen(char *str);
 int _strlenc(const char *str);
