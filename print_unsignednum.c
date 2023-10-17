@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_unsigned - Print an unsigned integer.
+ * print_unsigned_int - Print an unsigned integer.
  * @argument: Argument to print.
  *
  * Return: Number of chars printed.
